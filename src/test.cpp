@@ -19,9 +19,9 @@ TEST(CacheTest, MissingValue) {
 }
 
 TEST(CacheTest1, KeepsAllValuesWithinCapacity) {
-    cache::lru_cache<int, int> cache_lru(TEST2_CACHE_CAPACITY);
+    cache::lru_cache<int, int> cache_lru(TEST2_CACHE_CAPACITY); //init 50
 
-    for (int i = 0; i < NUM_OF_TEST2_RECORDS; ++i) {
+    for (int i = 0; i < NUM_OF_TEST2_RECORDS; ++i) { //put 100
         cache_lru.put(i, i);
     }
 
@@ -29,6 +29,7 @@ TEST(CacheTest1, KeepsAllValuesWithinCapacity) {
         EXPECT_FALSE(cache_lru.exists(i));
     }
 
+	//when size > max size , least used cache replace by new
     for (int i = NUM_OF_TEST2_RECORDS - TEST2_CACHE_CAPACITY; i < NUM_OF_TEST2_RECORDS; ++i) {
         EXPECT_TRUE(cache_lru.exists(i));
         EXPECT_EQ(i, cache_lru.get(i));
