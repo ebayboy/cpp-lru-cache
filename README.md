@@ -28,4 +28,4 @@ cmake ..
 make check
 ```
 
-[LRU Cache](https://www.jianshu.com/p/379b5e0624d4)
+[LRU Cache(Least Recently Used)](https://www.jianshu.com/p/379b5e0624d4)
